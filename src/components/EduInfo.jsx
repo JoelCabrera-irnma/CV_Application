@@ -14,14 +14,6 @@ function EduInfo({ school, title, date }) {
             </div>
             <div className="clear"></div>
         </section>
-
-
-        // <section className="section-gral">
-        //     <h1>Educational Experience</h1>
-        //     <div className="card">{title}</div>
-        //     <div className="card">{school}</div>
-        //     <div className="card">{date}</div>
-        // </section>
     )
 }
 
