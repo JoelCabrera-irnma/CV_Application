@@ -1,4 +1,5 @@
 import "./styles/resumeCV.css";
+import {useState} from 'react';
 import GralInfo from "./GralInfo";
 import EduInfo from "./EduInfo";
 import ExperienceInfo from "./ExperienceInfo";
@@ -14,7 +15,13 @@ const CvComponent = ({
   position,
   responsabilities,
   yearsWorking,
+  onRender
 }) => {
+  const [arrayBox , setArrayBox] = useState([{school:"Harvard",title:"Enginer",date:"12/05/22"}])
+  function addSection() {
+    setArrayBox([...arrayBox,{school:school, title:title, date:date}])
+    onRender()
+  }
   return (
     <div id="cv" className="instaFade">
       <GralInfo name={name} phone={phone} email={email} title={title} />
@@ -31,7 +38,11 @@ const CvComponent = ({
           <div className="clear"></div>
         </section>
 
-        <EduInfo school={school} title={title} date={date} />
+        {arrayBox.map((box,id) => (
+          <EduInfo key={id} school={box.school} title={box.title} date={box.date}/>
+        ))}
+        {/* <EduInfo school={school} title={title} date={date} /> */}
+        <button className="addSectionEdu" onClick={addSection} >Add +</button>
 
         <ExperienceInfo
           company={company}
@@ -59,5 +70,6 @@ const CvComponent = ({
     </div>
   );
 };
+
 
 export default CvComponent;

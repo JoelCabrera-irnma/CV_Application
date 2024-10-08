@@ -4,6 +4,7 @@ import Aside from './components/AsideForm.jsx'
 import Resume from "./components/CvComponent.jsx";
 
 function App() {
+    const [render, setRender] = useState(false)
     const [name, setName] = useState('')
     const [email, setEmail] = useState('')
     const [phone, setPhone] = useState('')
@@ -32,7 +33,7 @@ function App() {
                 onChangeDateYears={(e) => setYearsWorking(e.target.value)}
             />
             <main>
-                <Resume name={name} phone={phone} email={email} school={school} title={title} date={date} company={company} position={position} responsabilities={responsabilities} yearsWorking={yearsWorking} />
+                <Resume name={name} phone={phone} email={email} school={school} title={title} date={date} company={company} position={position} responsabilities={responsabilities} yearsWorking={yearsWorking} onRender={()=>{setRender(!render);console.log("alert")}}/>
             </main>
         </div>
 
