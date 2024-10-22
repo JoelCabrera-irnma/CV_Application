@@ -4,7 +4,7 @@ import Aside from './components/AsideForm.jsx'
 import Resume from "./components/CvComponent.jsx";
 
 function App() {
-    const [render, setRender] = useState(false)
+    const [render, setRender] = useState([1,2,3])
     const [name, setName] = useState('')
     const [email, setEmail] = useState('')
     const [phone, setPhone] = useState('')
@@ -18,6 +18,9 @@ function App() {
     const [responsabilities, setResponsabilities] = useState('')
     const [yearsWorking, setYearsWorking] = useState('')
 
+    function subRender(value){
+        setRender(value)
+    }
     return (
         <div className="mainBox">
             <Aside
@@ -31,9 +34,10 @@ function App() {
                 onChangePosition={(e) => setPosition(e.target.value)}
                 onChangeRespons={(e) => setResponsabilities(e.target.value)}
                 onChangeDateYears={(e) => setYearsWorking(e.target.value)}
+                render={render}
             />
             <main>
-                <Resume name={name} phone={phone} email={email} school={school} title={title} date={date} company={company} position={position} responsabilities={responsabilities} yearsWorking={yearsWorking} onRender={()=>{setRender(!render);console.log("alert")}}/>
+                <Resume name={name} phone={phone} email={email} school={school} title={title} date={date} company={company} position={position} responsabilities={responsabilities} yearsWorking={yearsWorking} onRender={subRender}/>
             </main>
         </div>
 
